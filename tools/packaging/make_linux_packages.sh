@@ -98,3 +98,8 @@ fpm -s dir -t rpm\
 rpm=(renode*rpm)
 mv $rpm $OUTPUT
 echo "Created a Fedora package in $PACKAGES/$rpm"
+
+if $REMOVE_WORKDIR
+then
+    rm -rf $DIR
+fi
