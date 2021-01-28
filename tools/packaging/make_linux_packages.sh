@@ -98,16 +98,3 @@ fpm -s dir -t rpm\
 rpm=(renode*rpm)
 mv $rpm $OUTPUT
 echo "Created a Fedora package in $PACKAGES/$rpm"
-### create arch package
-fpm -s dir -t pacman\
-    -d mono -d gtk-sharp-2 -d screen -d polkit -d gcc -d python3 -d python-pip -d zeromq \
-    "${GENERAL_FLAGS[@]}" >/dev/null
-
-arch=(renode*.pkg.tar.xz)
-mv $arch $OUTPUT
-echo "Created an Arch package in $PACKAGES/$arch"
-#cleanup unless user requests otherwise
-if $REMOVE_WORKDIR
-then
-    rm -rf $DIR
-fi
